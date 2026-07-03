@@ -6,54 +6,54 @@
 <title>OX 퀴즈</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,'Pretendard',sans-serif;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);min-height:100vh;color:#fff;overflow-x:hidden;}
+body{font-family:-apple-system,'Pretendard',sans-serif;background:linear-gradient(135deg,#faf5ff,#f3e8ff,#f8f0ff);min-height:100vh;color:#1e1b4b;overflow-x:hidden;}
 .screen{display:none;min-height:100vh;}
 .screen.active{display:flex;flex-direction:column;}
-.center{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:20px;text-align:center;}
-.title{font-size:2.4rem;font-weight:900;background:linear-gradient(90deg,#f093fb,#f5576c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
-.sub{color:rgba(255,255,255,.55);margin-bottom:24px;font-size:.95rem;}
+.center{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;flex:1;padding:clamp(20px,5vh,52px) 20px 24px;text-align:center;}
+.title{font-size:2.4rem;font-weight:900;background:linear-gradient(90deg,#9333ea,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
+.sub{color:rgba(109,40,217,.6);margin-bottom:24px;font-size:.95rem;}
 .btn{padding:13px 30px;border:none;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .18s;}
 .btn:hover{transform:translateY(-2px);filter:brightness(1.12);}
-.btn-pri{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;box-shadow:0 4px 18px rgba(102,126,234,.45);}
-.btn-ghost{background:transparent;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.15);}
+.btn-pri{background:linear-gradient(135deg,#9333ea,#7c3aed);color:#fff;box-shadow:0 4px 18px rgba(147,51,234,.35);}
+.btn-ghost{background:transparent;color:rgba(109,40,217,.55);border:1px solid rgba(147,51,234,.25);}
 .btn-danger{background:linear-gradient(135deg,#ff416c,#ff4b2b);color:#fff;}
-.card{background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.45);border-radius:20px;padding:28px;width:100%;max-width:460px;backdrop-filter:blur(10px);}
-.inp{width:100%;padding:13px 20px;border:2px solid rgba(255,255,255,.2);border-radius:50px;background:rgba(255,255,255,.08);color:#fff;font-size:1rem;outline:none;transition:border-color .2s;}
-.inp:focus{border-color:#f093fb;}
-.inp::placeholder{color:rgba(255,255,255,.3);}
-label{display:block;color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:7px;text-align:left;}
+.card{background:rgba(255,255,255,.75);border:1px solid rgba(147,51,234,.22);border-radius:20px;padding:28px;width:100%;max-width:460px;backdrop-filter:blur(10px);}
+.inp{width:100%;padding:13px 20px;border:2px solid rgba(147,51,234,.22);border-radius:50px;background:rgba(255,255,255,.6);color:#1e1b4b;font-size:1rem;outline:none;transition:border-color .2s;}
+.inp:focus{border-color:#9333ea;}
+.inp::placeholder{color:rgba(109,40,217,.35);}
+label{display:block;color:rgba(109,40,217,.65);font-size:.85rem;margin-bottom:7px;text-align:left;}
 
 .mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;width:100%;max-width:400px;}
-.mode-btn{padding:36px 16px;border:2px solid rgba(255,255,255,.18);border-radius:20px;background:rgba(255,255,255,.05);color:#fff;cursor:pointer;font-size:.95rem;font-weight:700;transition:all .2s;}
-.mode-btn:hover{border-color:#f093fb;background:rgba(240,147,251,.12);transform:translateY(-4px);}
+.mode-btn{padding:36px 16px;border:2px solid rgba(147,51,234,.2);border-radius:20px;background:rgba(255,255,255,.55);color:#1e1b4b;cursor:pointer;font-size:.95rem;font-weight:700;transition:all .2s;}
+.mode-btn:hover{border-color:#9333ea;background:rgba(147,51,234,.08);transform:translateY(-4px);}
 .mode-icon{font-size:2.8rem;display:block;margin-bottom:10px;}
 
 /* 과목 선택 */
 .subj-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;width:100%;max-width:380px;}
-.subj-btn{padding:30px 16px;border:2px solid rgba(255,255,255,.18);border-radius:20px;background:rgba(255,255,255,.05);color:#fff;cursor:pointer;font-size:.95rem;font-weight:700;transition:all .18s;text-align:center;}
-.subj-btn:hover{border-color:#f093fb;background:rgba(240,147,251,.12);transform:translateY(-4px);}
+.subj-btn{padding:30px 16px;border:2px solid rgba(147,51,234,.2);border-radius:20px;background:rgba(255,255,255,.55);color:#1e1b4b;cursor:pointer;font-size:.95rem;font-weight:700;transition:all .18s;text-align:center;}
+.subj-btn:hover{border-color:#9333ea;background:rgba(147,51,234,.08);transform:translateY(-4px);}
 .subj-em{font-size:2.6rem;display:block;margin-bottom:8px;}
-.subj-btn.sel{border-color:#f093fb;background:rgba(240,147,251,.18);}
+.subj-btn.sel{border-color:#9333ea;background:rgba(147,51,234,.14);}
 .cnt-grid{display:flex;gap:10px;justify-content:center;margin:14px 0;}
-.cnt-btn{padding:12px 22px;border:2px solid rgba(255,255,255,.18);border-radius:50px;background:rgba(255,255,255,.05);color:#fff;cursor:pointer;font-size:1rem;font-weight:700;transition:all .18s;}
-.cnt-btn.sel{border-color:#f093fb;background:rgba(240,147,251,.18);}
+.cnt-btn{padding:12px 22px;border:2px solid rgba(147,51,234,.2);border-radius:50px;background:rgba(255,255,255,.55);color:#1e1b4b;cursor:pointer;font-size:1rem;font-weight:700;transition:all .18s;}
+.cnt-btn.sel{border-color:#9333ea;background:rgba(147,51,234,.14);}
 
-.room-code{font-size:4.5rem;font-weight:900;letter-spacing:.18em;background:linear-gradient(90deg,#f093fb,#f5576c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.room-box{background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.45);border-radius:16px;padding:20px 28px;text-align:center;margin:14px 0;width:100%;max-width:420px;}
+.room-code{font-size:4.5rem;font-weight:900;letter-spacing:.18em;background:linear-gradient(90deg,#9333ea,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.room-box{background:rgba(255,255,255,.75);border:1px solid rgba(147,51,234,.22);border-radius:16px;padding:20px 28px;text-align:center;margin:14px 0;width:100%;max-width:420px;}
 .player-list{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;justify-content:center;min-height:50px;width:100%;max-width:560px;}
-.p-chip{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border-radius:50px;padding:5px 14px;font-size:.88rem;}
+.p-chip{display:flex;align-items:center;gap:6px;background:rgba(147,51,234,.1);border-radius:50px;padding:5px 14px;font-size:.88rem;}
 
 /* 선생님 게임 화면 */
 #hostGame{padding:16px;max-width:960px;margin:0 auto;width:100%;}
 .hg-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
-.q-info{color:rgba(255,255,255,.5);font-size:.88rem;}
+.q-info{color:rgba(109,40,217,.55);font-size:.88rem;}
 .timer{font-size:4rem;font-weight:900;line-height:1;min-width:80px;text-align:center;}
 .timer.urg{color:#ff4b2b;animation:pulse .45s ease infinite alternate;}
 @keyframes pulse{to{transform:scale(1.12);}}
-.ans-cnt{color:rgba(255,255,255,.5);font-size:.88rem;text-align:right;}
-.prog{width:100%;height:7px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;margin-bottom:14px;}
-.prog-fill{height:100%;background:linear-gradient(90deg,#f093fb,#f5576c);border-radius:4px;transition:width .6s;}
-.q-text{font-size:1.75rem;font-weight:700;text-align:center;line-height:1.4;padding:22px;background:rgba(255,255,255,.28);border-radius:16px;margin-bottom:14px;}
+.ans-cnt{color:rgba(109,40,217,.55);font-size:.88rem;text-align:right;}
+.prog{width:100%;height:7px;background:rgba(147,51,234,.12);border-radius:4px;overflow:hidden;margin-bottom:14px;}
+.prog-fill{height:100%;background:linear-gradient(90deg,#9333ea,#7c3aed);border-radius:4px;transition:width .6s;}
+.q-text{font-size:1.75rem;font-weight:700;text-align:center;line-height:1.4;padding:22px;background:rgba(255,255,255,.75);border:1px solid rgba(147,51,234,.15);border-radius:16px;margin-bottom:14px;}
 
 /* 미니미 필드 */
 .field{position:relative;width:100%;height:260px;border-radius:18px;overflow:hidden;margin-bottom:6px;}
@@ -63,7 +63,7 @@ label{display:block;color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:7
 .f-label{position:absolute;top:8px;font-size:3rem;font-weight:900;opacity:.5;pointer-events:none;}
 .f-label-o{left:8%;color:#4CAF50;}
 .f-label-x{right:8%;color:#f44336;}
-.field-center-line{position:absolute;left:50%;top:10%;bottom:10%;width:2px;background:rgba(255,255,255,.12);transform:translateX(-50%);pointer-events:none;}
+.field-center-line{position:absolute;left:50%;top:10%;bottom:10%;width:2px;background:rgba(147,51,234,.2);transform:translateX(-50%);pointer-events:none;}
 #miniContainer{position:absolute;inset:0;}
 
 /* 미니미 캐릭터 */
@@ -75,7 +75,7 @@ label{display:block;color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:7
   will-change:left,top;
 }
 .mc .em{font-size:1.65rem;display:block;line-height:1;}
-.mc .mn{font-size:.5rem;color:rgba(255,255,255,.75);max-width:44px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center;}
+.mc .mn{font-size:.5rem;color:rgba(109,40,217,.8);max-width:44px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center;}
 .mc.cel{animation:jump .42s ease infinite alternate;}
 .mc.out{opacity:.2;filter:grayscale(1);}
 .mc .changed-dot{position:absolute;top:-4px;right:-4px;width:8px;height:8px;border-radius:50%;background:#ffd700;animation:dotFade 1.5s ease forwards;}
@@ -91,8 +91,8 @@ label{display:block;color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:7
 #pendingRow .mc{position:static;transform:none;opacity:.38;transition:opacity .3s;}
 
 .host-btns{text-align:center;margin-top:8px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-.btn-reveal{background:linear-gradient(135deg,#f093fb,#f5576c);color:#fff;font-size:1.1rem;padding:14px 38px;}
-.btn-next{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;font-size:1.05rem;padding:14px 34px;}
+.btn-reveal{background:linear-gradient(135deg,#9333ea,#7c3aed);color:#fff;font-size:1.1rem;padding:14px 38px;}
+.btn-next{background:linear-gradient(135deg,#9333ea,#7c3aed);color:#fff;font-size:1.05rem;padding:14px 34px;}
 .btn-o{background:linear-gradient(135deg,#56ab2f,#a8e063);color:#fff;font-size:2.4rem;padding:22px 44px;border-radius:20px;border:3px solid transparent;transition:all .2s;}
 .btn-x{background:linear-gradient(135deg,#ff416c,#ff4b2b);color:#fff;font-size:2.4rem;padding:22px 44px;border-radius:20px;border:3px solid transparent;transition:all .2s;}
 .btn-o.picked{border-color:#fff;box-shadow:0 0 20px rgba(86,171,47,.8);transform:scale(1.07);}
@@ -107,39 +107,39 @@ label{display:block;color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:7
 .pd2{height:88px;background:linear-gradient(135deg,#c0c0c0,#9e9e9e);}
 .pd3{height:68px;background:linear-gradient(135deg,#cd7f32,#a0522d);}
 .stats{width:100%;max-width:580px;display:flex;flex-direction:column;gap:7px;}
-.st-row{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.28);border-radius:12px;padding:11px 15px;}
+.st-row{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.75);border:1px solid rgba(147,51,234,.12);border-radius:12px;padding:11px 15px;}
 .st-rank{font-size:1.1rem;font-weight:900;min-width:28px;}
 .st-av{font-size:1.4rem;}
 .st-name{flex:1;font-weight:700;font-size:.95rem;text-align:left;}
-.st-bar{width:90px;height:7px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden;}
-.st-fill{height:100%;background:linear-gradient(90deg,#667eea,#764ba2);border-radius:4px;}
-.st-sc{font-size:1rem;font-weight:700;color:#f093fb;min-width:48px;text-align:right;}
+.st-bar{width:90px;height:7px;background:rgba(147,51,234,.12);border-radius:4px;overflow:hidden;}
+.st-fill{height:100%;background:linear-gradient(90deg,#e8631a,#b83510);border-radius:4px;}
+.st-sc{font-size:1rem;font-weight:700;color:#9333ea;min-width:48px;text-align:right;}
 .pf-badge{background:linear-gradient(135deg,#ffd700,#ff9500);color:#000;font-weight:900;font-size:.65rem;padding:2px 6px;border-radius:6px;margin-left:4px;vertical-align:middle;}
 
 .spinner{font-size:3.5rem;animation:spin 1.8s linear infinite;margin-bottom:16px;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .av-grid{display:flex;gap:14px;justify-content:center;margin:16px 0;}
 .av-opt{font-size:2.3rem;cursor:pointer;padding:10px;border:3px solid transparent;border-radius:50%;transition:all .18s;}
-.av-opt.sel{border-color:#f093fb;background:rgba(240,147,251,.2);}
+.av-opt.sel{border-color:#9333ea;background:rgba(147,51,234,.14);}
 .av-opt:hover{transform:scale(1.12);}
 
 .pg-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:20px;gap:12px;}
-.p-q{font-size:1.4rem;font-weight:700;text-align:center;line-height:1.45;padding:20px;background:rgba(255,255,255,.28);border-radius:16px;width:100%;max-width:480px;}
+.p-q{font-size:1.4rem;font-weight:700;text-align:center;line-height:1.45;padding:20px;background:rgba(255,255,255,.75);border:1px solid rgba(147,51,234,.15);border-radius:16px;width:100%;max-width:480px;}
 .ox-row{display:flex;gap:20px;justify-content:center;}
-.p-sel-info{font-size:1rem;color:rgba(255,255,255,.55);min-height:24px;}
+.p-sel-info{font-size:1rem;color:rgba(109,40,217,.55);min-height:24px;}
 .rev-ok{color:#4CAF50;font-size:1.2rem;font-weight:700;}
 .rev-no{color:#f44336;font-size:1.2rem;font-weight:700;}
 .pres .big-av{font-size:4.5rem;}
 .pres .pname{font-size:1.8rem;font-weight:900;margin:8px 0;}
-.pres .pscore{font-size:2.8rem;font-weight:900;color:#f093fb;margin:8px 0;}
-.pres .prank{color:rgba(255,255,255,.55);font-size:1rem;margin-bottom:16px;}
-.pf-big{font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,#ffd700,#ff9500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.pres .pscore{font-size:2.8rem;font-weight:900;color:#9333ea;margin:8px 0;}
+.pres .prank{color:rgba(109,40,217,.55);font-size:1rem;margin-bottom:16px;}
+.pf-big{font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,#9333ea,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 
 /* 초기화 확인 모달 */
 .confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:500;display:none;}
-.confirm-box{background:rgba(140,80,220,.95);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:28px;text-align:center;max-width:320px;width:90%;}
-.confirm-box h3{font-size:1.2rem;margin-bottom:10px;}
-.confirm-box p{color:rgba(255,255,255,.55);font-size:.9rem;margin-bottom:20px;}
+.confirm-box{background:rgba(245,240,255,.98);border:1px solid rgba(147,51,234,.3);border-radius:20px;padding:28px;text-align:center;max-width:320px;width:90%;}
+.confirm-box h3{font-size:1.2rem;margin-bottom:10px;color:#1e1b4b;}
+.confirm-box p{color:rgba(109,40,217,.6);font-size:.9rem;margin-bottom:20px;}
 .confirm-btns{display:flex;gap:10px;justify-content:center;}
 
 @media(max-width:480px){
@@ -199,9 +199,9 @@ label{display:block;color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:7
 <div class="center">
   <div class="title"><span style="-webkit-text-fill-color:initial">📡</span> 대기실</div>
   <div class="room-box">
-    <div style="color:rgba(255,255,255,.5);font-size:.85rem;margin-bottom:6px;">방 코드</div>
+    <div style="color:rgba(109,40,217,.6);font-size:.85rem;margin-bottom:6px;">방 코드</div>
     <div class="room-code" id="dispCode">----</div>
-    <div style="color:rgba(255,255,255,.45);font-size:.8rem;margin-top:6px;">학생들에게 이 코드를 알려주세요</div>
+    <div style="color:rgba(109,40,217,.5);font-size:.8rem;margin-top:6px;">학생들에게 이 코드를 알려주세요</div>
   </div>
   <div id="qrBox" style="margin:8px 0;"></div>
   <div class="sub">참가 <span id="pCount">0</span>명</div>
@@ -333,7 +333,7 @@ label{display:block;color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:7
 </div>
 
 <!-- 과목선택 플로팅 버튼 -->
-<button id="floatSubj" onclick="show('scrHostSetup')" style="position:fixed;bottom:16px;right:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);font-size:.78rem;font-weight:700;padding:7px 15px;border-radius:20px;backdrop-filter:blur(8px);z-index:9999;cursor:pointer;transition:all .2s;">📚 과목선택</button>
+<button id="floatSubj" onclick="show('scrHostSetup')" style="position:fixed;bottom:16px;right:16px;background:rgba(255,255,255,.7);border:1px solid rgba(147,51,234,.3);color:rgba(109,40,217,.8);font-size:.78rem;font-weight:700;padding:7px 15px;border-radius:20px;backdrop-filter:blur(8px);z-index:9999;cursor:pointer;transition:all .2s;">📚 과목선택</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script type="module">
@@ -360,68 +360,72 @@ const SUBJ_INFO={
 
 const QDB={
   korean:[
+    // ─ O (15개) — 각 단어/개념 1회만 등장 ─
     {q:"음운 변동이란 형태소 결합 시 음운이 바뀌거나 없어지거나 더해지는 현상이다.",a:true},
-    {q:"비음화란 파열음이 비음 앞에서 비음으로 바뀌는 현상이다.",a:true},
     {q:"'국물'은 비음화가 일어나 [궁물]로 발음된다.",a:true},
     {q:"'먹는'은 비음화가 일어나 [멍는]으로 발음된다.",a:true},
-    {q:"'밥물'은 비음화가 일어나 [밤물]로 발음된다.",a:true},
-    {q:"유음화란 'ㄴ'이 유음 'ㄹ'의 앞이나 뒤에서 'ㄹ'로 바뀌는 현상이다.",a:true},
     {q:"'신라'는 유음화가 일어나 [실라]로 발음된다.",a:true},
-    {q:"'칼날'은 유음화가 일어나 [칼랄]로 발음된다.",a:true},
     {q:"구개음화는 'ㄷ, ㅌ'이 모음 'ㅣ' 앞에서 'ㅈ, ㅊ'으로 바뀌는 현상이다.",a:true},
     {q:"'굳이'는 구개음화가 일어나 [구지]로 발음된다.",a:true},
-    {q:"'맏이'는 구개음화가 일어나 [마지]로 발음된다.",a:true},
-    {q:"연음화란 앞 음절의 받침이 뒤에 오는 모음과 이어져 발음되는 현상이다.",a:true},
     {q:"'꽃이'는 연음화가 일어나 [꼬치]로 발음된다.",a:true},
     {q:"음운 변동의 종류에는 교체, 탈락, 첨가, 축약이 있다.",a:true},
     {q:"비음화는 음운 변동 중 교체에 해당한다.",a:true},
-    {q:"구개음화는 음운 변동 중 교체에 해당한다.",a:true},
     {q:"'좋다'는 ㅎ이 개입하여 [조타]로 발음된다.",a:true},
     {q:"'않다'는 [안타]로 발음된다.",a:true},
-    {q:"탈락은 음운의 개수가 줄어드는 음운 변동이다.",a:true},
     {q:"축약이란 두 음운이 합쳐져 하나의 음운이 되는 현상이다.",a:true},
-    {q:"된소리되기(경음화)는 음운 변동 중 교체에 해당한다.",a:true},
     {q:"'닭'은 [닥]으로 발음된다.",a:true},
-    {q:"'앉다'는 [안따]로 발음된다.",a:true},
     {q:"'독립'은 비음화가 일어나 [동닙]으로 발음된다.",a:true},
-    {q:"음운 변동이 일어나도 단어의 의미는 변하지 않는다.",a:true},
-    {q:"'국물'은 음운 변동 없이 [국물]로 발음된다.",a:false},
-    {q:"'신라'는 비음화가 일어나 [신나]로 발음된다.",a:false},
-    {q:"비음화는 음운 변동 중 탈락에 해당한다.",a:false},
+    {q:"'밥물'은 비음화가 일어나 [밤물]로 발음된다.",a:true},
+    // ─ X (15개) — O와 단어 겹침 없음 ─
+    {q:"'칼날'은 비음화가 일어나 [칼날]로 발음된다.",a:false},
+    {q:"'맏이'는 음운 변동 없이 [맏이]로 발음된다.",a:false},
+    {q:"'논리'는 비음화가 일어나 [논니]로 발음된다.",a:false},
+    {q:"된소리되기는 음운 변동 중 탈락에 해당한다.",a:false},
+    {q:"음절의 끝소리 규칙에서 받침으로 쓸 수 있는 자음은 8개이다.",a:false},
+    {q:"유음화란 'ㄹ'이 비음 'ㄴ' 앞에서 'ㄴ'으로 바뀌는 현상이다.",a:false},
+    {q:"'솜이불'은 음운 변동 없이 [소미불]로 발음된다.",a:false},
+    {q:"탈락이란 두 음운이 합쳐져 하나의 음운이 되는 현상이다.",a:false},
+    {q:"비음화란 비음이 파열음 앞에서 파열음으로 바뀌는 현상이다.",a:false},
+    {q:"'한여름'은 음운 변동 없이 [한여름]으로 발음된다.",a:false},
     {q:"음운 변동이 일어나면 항상 음운의 개수가 줄어든다.",a:false},
-    {q:"구개음화는 'ㅂ, ㅍ'이 모음 'ㅣ' 앞에서 변하는 현상이다.",a:false},
+    {q:"'닫혀'는 음운 변동 없이 [닫혀]로 발음된다.",a:false},
+    {q:"'밭이'는 비음화가 일어나 [반이]로 발음된다.",a:false},
+    {q:"구개음화는 음운 변동 중 첨가에 해당한다.",a:false},
+    {q:"'앞마당'은 비음화가 일어나 [압마당]으로 발음된다.",a:false},
   ],
   art:[
+    // ─ O (15개) — 15가지 서로 다른 주제 ─
     {q:"스티브 잡스는 애플의 공동 창업자이다.",a:true},
-    {q:"최초의 이모티콘 형태는 :-) 이다.",a:true},
     {q:"빨강, 노랑, 파랑은 색의 3원색이다.",a:true},
     {q:"바우하우스는 독일에서 시작된 디자인 학교이다.",a:true},
     {q:"나이키의 로고는 '스우시(Swoosh)'라고 불린다.",a:true},
     {q:"UX 디자인의 UX는 User Experience의 약자이다.",a:true},
     {q:"빨강, 초록, 파랑은 빛의 3원색이다.",a:true},
     {q:"황금비율은 약 1:1.618이다.",a:true},
-    {q:"픽토그램은 그림 문자로 국제적으로 통용되는 시각 기호이다.",a:true},
-    {q:"타이포그래피는 글자의 배치와 스타일을 다루는 디자인 분야이다.",a:true},
-    {q:"UI는 User Interface의 약자이다.",a:true},
+    {q:"보색은 색상환에서 서로 마주보는 색이다.",a:true},
+    {q:"벡터 그래픽은 확대해도 깨지지 않는다.",a:true},
     {q:"코카콜라의 브랜드 대표 색상은 빨간색이다.",a:true},
     {q:"색상, 명도, 채도는 색의 3속성이다.",a:true},
-    {q:"인포그래픽이란 정보를 시각적으로 표현한 것이다.",a:true},
-    {q:"보색은 색상환에서 서로 마주보는 색이다.",a:true},
-    {q:"최초의 이모티콘은 1982년 스콧 팔먼 교수가 제안했다.",a:true},
-    {q:"그리드 시스템은 디자인 요소를 정렬하는 격자 구조이다.",a:true},
-    {q:"벡터 그래픽은 확대해도 깨지지 않는다.",a:true},
-    {q:"반응형 디자인이란 화면 크기에 따라 레이아웃이 변하는 디자인이다.",a:true},
-    {q:"여백(White Space)은 디자인에서 중요한 요소로 활용된다.",a:true},
     {q:"삼성의 로고는 파란색이다.",a:true},
-    {q:"패키지 디자인은 제품의 포장을 디자인하는 분야이다.",a:true},
-    {q:"스티브 잡스는 아이폰을 2007년에 발표했다.",a:true},
-    {q:"폰트(Font)란 동일한 크기와 스타일의 글꼴 집합이다.",a:true},
     {q:"조형의 기본 요소에는 점, 선, 면이 있다.",a:true},
-    {q:"스티브 잡스는 애플의 공식 수석 디자이너였다.",a:false},
-    {q:"바우하우스는 프랑스에서 시작됐다.",a:false},
-    {q:"빨강, 초록, 파랑은 색의 3원색이다.",a:false},
-    {q:"황금비율은 약 1:2이다.",a:false},
-    {q:"코카콜라의 브랜드 대표 색상은 파란색이다.",a:false},
+    {q:"타이포그래피는 글자의 배치와 스타일을 다루는 디자인 분야이다.",a:true},
+    {q:"픽토그램은 국제적으로 통용되는 그림 기호이다.",a:true},
+    // ─ X (15개) — O와 완전히 다른 주제 ─
+    {q:"최초의 이모티콘은 2000년대 일본에서 만들어졌다.",a:false},
+    {q:"구글의 로고는 단색으로 이루어져 있다.",a:false},
+    {q:"CI는 Corporate Internet의 약자이다.",a:false},
+    {q:"인스타그램의 로고 색상은 단색 파란색이다.",a:false},
+    {q:"CMYK에서 K는 흰색(White)을 의미한다.",a:false},
+    {q:"맥도날드의 골든 아치 로고는 파란색이다.",a:false},
+    {q:"QR코드는 일반 바코드보다 저장 용량이 작다.",a:false},
+    {q:"무인양품(MUJI)은 프랑스 브랜드이다.",a:false},
+    {q:"스타벅스의 로고 색상은 파란색 계열이다.",a:false},
+    {q:"레드닷 디자인 어워드는 미국에서 주관하는 상이다.",a:false},
+    {q:"폰트(Font)와 서체(Typeface)는 완전히 같은 의미이다.",a:false},
+    {q:"스마트폰 화면은 CMYK 방식으로 색을 표현한다.",a:false},
+    {q:"3D 프린팅은 제품 디자인과 무관한 기술이다.",a:false},
+    {q:"저작권 기호(©)는 상표권을 의미한다.",a:false},
+    {q:"IKEA의 로고 색상은 초록과 흰색으로 이루어져 있다.",a:false},
   ],
 };
 
