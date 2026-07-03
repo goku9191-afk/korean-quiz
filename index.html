@@ -339,7 +339,7 @@ label{display:block;color:rgba(109,40,217,.65);font-size:.85rem;margin-bottom:7p
 </div>
 
 <!-- 과목선택 플로팅 버튼 -->
-<button id="floatSubj" onclick="show('scrHostSetup')" style="position:fixed;bottom:16px;right:16px;background:rgba(255,255,255,.7);border:1px solid rgba(147,51,234,.3);color:rgba(109,40,217,.8);font-size:.78rem;font-weight:700;padding:7px 15px;border-radius:20px;backdrop-filter:blur(8px);z-index:9999;cursor:pointer;transition:all .2s;">📚 과목선택</button>
+<button id="floatSubj" onclick="show('scrHostSetup')" style="display:none;position:fixed;bottom:16px;right:16px;background:rgba(255,255,255,.7);border:1px solid rgba(147,51,234,.3);color:rgba(109,40,217,.8);font-size:.78rem;font-weight:700;padding:7px 15px;border-radius:20px;backdrop-filter:blur(8px);z-index:9999;cursor:pointer;transition:all .2s;">📚 과목선택</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script type="module">
@@ -478,7 +478,12 @@ function playCheer(){
 }
 
 // ─── 유틸 ───
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const fs=$('floatSubj');
+  if(fs)fs.style.display=['scrHostLobby','scrHostGame','scrHostResult'].includes(id)?'':'none';
+}
 window.show=show;
 function $(id){return document.getElementById(id);}
 function toast(m){const e=document.createElement('div');e.textContent=m;e.style.cssText='position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:9px 20px;border-radius:20px;z-index:9999;font-size:.9rem;pointer-events:none;';document.body.appendChild(e);setTimeout(()=>e.remove(),2200);}
