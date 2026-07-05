@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>OX 퀴즈</title>
+<title>국어 OX 퀴즈</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:-apple-system,'Pretendard',sans-serif;background:linear-gradient(135deg,#faf5ff,#f3e8ff,#f8f0ff);min-height:100vh;color:#1e1b4b;overflow-x:hidden;}
@@ -159,7 +159,7 @@ label{display:block;color:rgba(109,40,217,.65);font-size:.85rem;margin-bottom:7p
 <!-- 모드 선택 -->
 <div id="scrMode" class="screen active">
 <div class="center">
-  <div class="title" id="modeTitle"><span style="-webkit-text-fill-color:initial">📝</span> OX 퀴즈</div>
+  <div class="title"><span style="-webkit-text-fill-color:initial">📚</span> 국어 OX 퀴즈</div>
   <div class="sub">누구로 참여하시나요?</div>
   <div class="mode-grid">
     <div class="mode-btn" onclick="show('scrHostSetup')"><span class="mode-icon">🧑‍🏫</span>선생님<br><small style="font-weight:400;opacity:.7">(게임 진행)</small></div>
@@ -172,18 +172,7 @@ label{display:block;color:rgba(109,40,217,.65);font-size:.85rem;margin-bottom:7p
 <div id="scrHostSetup" class="screen">
 <div class="center">
   <div class="title" style="margin-bottom:4px;"><span style="-webkit-text-fill-color:initial">🎮</span> 게임 설정</div>
-  <div class="sub" style="margin-bottom:12px;">과목 선택</div>
-  <div class="subj-grid">
-    <div class="subj-btn" onclick="selSubject('korean',this)">
-      <span class="subj-em">📚</span>
-      국어<br><small style="font-weight:400;opacity:.65;font-size:.82rem;">음운 변동</small>
-    </div>
-    <div class="subj-btn" onclick="selSubject('art',this)">
-      <span class="subj-em">🎨</span>
-      미술<br><small style="font-weight:400;opacity:.65;font-size:.82rem;">디자인</small>
-    </div>
-  </div>
-  <div class="sub" style="margin-top:8px;margin-bottom:10px;">문제 수</div>
+  <div class="sub" style="margin-bottom:10px;">문제 수</div>
   <div class="cnt-grid" style="margin:0;">
     <div class="cnt-btn" onclick="selCount(10,this)">10개</div>
     <div class="cnt-btn" onclick="selCount(20,this)">20개</div>
@@ -361,7 +350,6 @@ const AV=['🐱','🐶','🐰','🐹','🦊'];
 
 const SUBJ_INFO={
   korean:{name:'국어', emoji:'📚', label:'국어 OX 퀴즈'},
-  art:{name:'미술', emoji:'🎨', label:'미술 OX 퀴즈'},
 };
 
 const QDB={
@@ -399,44 +387,10 @@ const QDB={
     {q:"구개음화는 음운 변동 중 첨가에 해당한다.",a:false},
     {q:"'앞마당'은 비음화가 일어나 [압마당]으로 발음된다.",a:false},
   ],
-  art:[
-    // ─ O (15개) — 15가지 서로 다른 주제 ─
-    {q:"스티브 잡스는 애플의 공동 창업자이다.",a:true},
-    {q:"빨강, 노랑, 파랑은 색의 3원색이다.",a:true},
-    {q:"바우하우스는 독일에서 시작된 디자인 학교이다.",a:true},
-    {q:"나이키의 로고는 '스우시(Swoosh)'라고 불린다.",a:true},
-    {q:"UX 디자인의 UX는 User Experience의 약자이다.",a:true},
-    {q:"빨강, 초록, 파랑은 빛의 3원색이다.",a:true},
-    {q:"황금비율은 약 1:1.618이다.",a:true},
-    {q:"보색은 색상환에서 서로 마주보는 색이다.",a:true},
-    {q:"벡터 그래픽은 확대해도 깨지지 않는다.",a:true},
-    {q:"코카콜라의 브랜드 대표 색상은 빨간색이다.",a:true},
-    {q:"색상, 명도, 채도는 색의 3속성이다.",a:true},
-    {q:"애플 로고는 처음부터 한입 베어 문 사과 모양이었다.",a:false},
-    {q:"조형의 기본 요소에는 점, 선, 면이 있다.",a:true},
-    {q:"타이포그래피는 글자의 배치와 스타일을 다루는 디자인 분야이다.",a:true},
-    {q:"픽토그램은 국제적으로 통용되는 그림 기호이다.",a:true},
-    // ─ X (15개) — O와 완전히 다른 주제 ─
-    {q:"최초의 이모티콘은 2000년대 일본에서 만들어졌다.",a:false},
-    {q:"구글의 로고는 단색으로 이루어져 있다.",a:false},
-    {q:"CI는 Corporate Internet의 약자이다.",a:false},
-    {q:"인스타그램의 로고 색상은 단색 파란색이다.",a:false},
-    {q:"CMYK에서 K는 흰색(White)을 의미한다.",a:false},
-    {q:"맥도날드의 골든 아치 로고는 파란색이다.",a:false},
-    {q:"QR코드는 일반 바코드보다 저장 용량이 작다.",a:false},
-    {q:"무인양품(MUJI)은 프랑스 브랜드이다.",a:false},
-    {q:"스타벅스의 로고 색상은 파란색 계열이다.",a:false},
-    {q:"레드닷 디자인 어워드는 미국에서 주관하는 상이다.",a:false},
-    {q:"폰트(Font)와 서체(Typeface)는 완전히 같은 의미이다.",a:false},
-    {q:"스마트폰 화면은 CMYK 방식으로 색을 표현한다.",a:false},
-    {q:"3D 프린팅은 제품 디자인과 무관한 기술이다.",a:false},
-    {q:"저작권 기호(©)는 상표권을 의미한다.",a:false},
-    {q:"IKEA의 로고 색상은 초록과 흰색으로 이루어져 있다.",a:false},
-  ],
 };
 
 // ─── 상태 ───
-let subject=null, qCount=10, myAv=0;
+let subject='korean', qCount=10, myAv=0;
 let roomCode='', playerId='', myAnswers={};
 let gameUnsub=null, timerIv=null;
 let playerPositions={};
@@ -585,16 +539,9 @@ function updateMiniPositions(players, qIdx, revealed, correctBool){
 
 
 // ─── 선생님: 설정 ───
-window.selSubject=(s,el)=>{
-  subject=s;
-  document.querySelectorAll('.subj-btn').forEach(b=>b.classList.remove('sel'));
-  el.classList.add('sel');
-  updateTitle();
-};
 window.selCount=(n,el)=>{qCount=n;document.querySelectorAll('.cnt-btn').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');};
 
 window.createRoom=async()=>{
-  if(!subject){toast('과목을 선택하세요!');return;}
   const pool=QDB[subject];
   const cnt=Math.min(qCount,pool.length);
   const ids=shuffle([...Array(pool.length).keys()]).slice(0,cnt);
@@ -740,8 +687,8 @@ window.resetGame=async()=>{
   $('confirmOverlay').style.display='none';
   if(roomCode)await remove(ref(db,`rooms/${roomCode}`));
   if(gameUnsub)gameUnsub();clearInterval(timerIv);stopSparkles();
-  roomCode='';subject=null;qCount=10;playerPositions={};prevAnswers={};
-  document.querySelectorAll('.subj-btn,.cnt-btn').forEach(b=>b.classList.remove('sel'));
+  roomCode='';subject='korean';qCount=10;playerPositions={};prevAnswers={};
+  document.querySelectorAll('.cnt-btn').forEach(b=>b.classList.remove('sel'));
   updateTitle();
   show('scrHostSetup');
 };
