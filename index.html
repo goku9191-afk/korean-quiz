@@ -152,6 +152,16 @@ label{display:block;color:rgba(109,40,217,.65);font-size:.85rem;margin-bottom:7p
   .field{height:200px;}
   .mc .em{font-size:1.4rem;}
 }
+
+/* ── 학생 게임 화면: 스크롤 없이 한 화면에 ── */
+#scrPlayerGame{height:100svh;overflow:hidden;}
+#scrPlayerGame .pg-wrap{justify-content:space-evenly;padding:8px 16px;gap:4px;}
+#scrPlayerGame .timer{font-size:2.6rem;}
+#scrPlayerGame .p-q{font-size:1.15rem;padding:12px 16px;max-height:30vh;overflow-y:auto;}
+#scrPlayerGame .btn-o,#scrPlayerGame .btn-x{font-size:2rem;padding:14px 32px;}
+#scrPlayerGame #revDisp{width:100%;max-width:480px;}
+#scrPlayerGame #revDisp>div[style*="font-size:3rem"]{font-size:2.4rem!important;margin-bottom:4px!important;}
+#scrPlayerGame .rev-ok,#scrPlayerGame .rev-no{font-size:1.05rem;}
 </style>
 </head>
 <body>
@@ -744,7 +754,7 @@ function subPlayerGame(){
       $('selInfo').textContent='';
       $('revDisp').style.display='block';
       const isOk=myA===ca;
-      const ansHint=qObj.e?`<div style="margin-top:10px;font-size:.85rem;color:rgba(109,40,217,.7);background:rgba(147,51,234,.08);border-radius:10px;padding:8px 12px;text-align:left;line-height:1.5;">💡 ${qObj.e}</div>`:'';
+      const ansHint=qObj.e?`<div style="margin-top:8px;font-size:.82rem;color:rgba(109,40,217,.7);background:rgba(147,51,234,.08);border-radius:10px;padding:7px 12px;text-align:left;line-height:1.45;max-height:22vh;overflow-y:auto;">💡 ${qObj.e}</div>`:'';
       $('revDisp').innerHTML=`<div style="font-size:3rem;margin-bottom:8px;">${ca==='O'?'⭕':'❌'}</div>`+(myA?`<div class="${isOk?'rev-ok':'rev-no'}">${isOk?'✅ 맞았어요!':'💔 틀렸어요'}</div>${!isOk?ansHint:''}`:`<div class="rev-no">⏰ 시간 초과</div>${ansHint}`);
     }
     show('scrPlayerGame');
