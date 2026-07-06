@@ -155,9 +155,9 @@ label{display:block;color:rgba(109,40,217,.65);font-size:.85rem;margin-bottom:7p
 
 /* ── 학생 게임 화면: 스크롤 없이 한 화면에 ── */
 #scrPlayerGame{height:100svh;overflow:hidden;}
-#scrPlayerGame .pg-wrap{justify-content:space-evenly;padding:8px 16px;gap:4px;}
+#scrPlayerGame .pg-wrap{justify-content:center;padding:8px 16px;gap:10px;}
 #scrPlayerGame .timer{font-size:2.6rem;}
-#scrPlayerGame .p-q{font-size:1.15rem;padding:12px 16px;max-height:30vh;overflow-y:auto;}
+#scrPlayerGame .p-q{font-size:1.15rem;padding:12px 16px;}
 #scrPlayerGame .btn-o,#scrPlayerGame .btn-x{font-size:2rem;padding:14px 32px;}
 #scrPlayerGame #revDisp{width:100%;max-width:480px;}
 #scrPlayerGame #revDisp>div[style*="font-size:3rem"]{font-size:2.4rem!important;margin-bottom:4px!important;}
@@ -171,7 +171,7 @@ label{display:block;color:rgba(109,40,217,.65);font-size:.85rem;margin-bottom:7p
 #hostGame .prog{margin-bottom:8px;}
 #hostGame .q-text{font-size:1.35rem;padding:12px 16px;margin-bottom:8px;flex-shrink:0;}
 #hostGame .field{height:200px;flex-shrink:0;}
-#hostGame #revealBanner{padding:10px 16px;margin-bottom:6px;flex-shrink:0;overflow-y:auto;max-height:22vh;}
+#hostGame #revealBanner{padding:10px 16px;margin-bottom:6px;flex-shrink:0;}
 #hostGame #revealBanner div[style*="font-size:3.8rem"]{font-size:2.8rem!important;line-height:1!important;}
 #hostGame .host-btns{margin-top:auto;padding-top:6px;}
 </style>
@@ -609,7 +609,7 @@ function subHostGame(){
       revBanner.style.display='block';
       revBanner.style.background=ca==='O'?'rgba(76,175,80,.3)':'rgba(244,67,54,.3)';
       revBanner.style.borderColor=ca==='O'?'#4CAF50':'#f44336';
-      revBanner.innerHTML=`<div style="font-size:3.8rem;line-height:1">${ca==='O'?'⭕':'❌'}</div><div style="font-size:1.1rem;font-weight:700;margin-top:6px;opacity:.9">정답은 <strong>${ca}</strong> 입니다!</div>`+(qObj.e?`<div style="margin-top:8px;font-size:.9rem;opacity:.85;line-height:1.5;">💡 ${qObj.e}</div>`:'');
+      revBanner.innerHTML=`<div style="font-size:3.8rem;line-height:1">${ca==='O'?'⭕':'❌'}</div><div style="font-size:1.1rem;font-weight:700;margin-top:6px;opacity:.9">정답은 <strong>${ca}</strong> 입니다!</div>`+(qObj.e?`<div style="margin-top:8px;font-size:.9rem;opacity:.85;line-height:1.5;max-height:14vh;overflow-y:auto;">💡 ${qObj.e}</div>`:'');
       startSparkles();
     } else {
       revBanner.style.display='none';
